@@ -1,0 +1,95 @@
+@media (min-width: 600) {
+    body{
+        font-size: 1.25rem;
+    }
+}
+
+body {
+    color: #53caf9;
+    font-family: 'Gabarito', sans-serif;
+    font-family: 'Kanit', sans-serif;
+    text-shadow: 0px 0px 5px black;
+    background-color: #01002f;
+}
+
+.MainBox {
+    height: 100vh;
+    background-image: url(https://www.teahub.io/photos/full/32-327306_32-9-wallpaper-4k.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+
+}
+
+.RegisterationBox {
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px black;
+    padding: 10px;
+    height: 350px;
+    width: auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.visitorList {
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px black;
+    padding: 10px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.container {
+    padding: 10px;
+}
+
+.InputBox {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 10px black;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+
+}
+
+.InputBox::placeholder {
+    color: white;
+}
+
+.DetailBox {
+    padding: 10px;
+}
+
+
+.Register {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    transition: 1s;
+}
+
+.Register:hover {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #53caf9;
+    border: none;
+    border-radius: 10px;
+    color: #01002f;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px black;
+}

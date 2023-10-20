@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Visitor Management System</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500&family=Kanit:wght@400;500&display=swap"
+    rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+</head>
+
+<body>
+  <div class="MainBox">
+    <div class="container">
+      <div class="RegisterationBox">
+        <h1>Visitor Management System</h1>
+
+        <h2>Register a Visitor</h2>
+        <form id="visitor-form">
+          <div class="DetailBox">
+            <input type="text" id="name" placeholder="Visitor Name" class="InputBox" required="required">
+          </div>
+          <div class="DetailBox">
+            <input type="text" id="email" placeholder="Visitor Email" class="InputBox" required="required">
+          </div>
+          <button type="button" onclick="registerVisitor()" class="Register">Register</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="visitorList">
+        <h2>Visitor List</h2>
+        <ol id="visitor-list"></ol>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyACpTyaTMEOj9BRhAY1xQ2aWGedF0LTYpQ",
+      authDomain: "visitor-management-26425.firebaseapp.com",
+      databaseURL: "https://visitor-management-26425-default-rtdb.firebaseio.com",
+      projectId: "visitor-management-26425",
+      storageBucket: "visitor-management-26425.appspot.com",
+      messagingSenderId: "96188810765",
+      appId: "1:96188810765:web:f368f789f6b2579f9ab744"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+
+    // Reference to the visitors collection
+    const db = firebase.database(app);
+    const visitorsRef = db.ref('visitors');
+
+    const visitorForm = document.getElementById('visitor-form');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const visitorList = document.getElementById('visitor-list');
+
+    // Register a visitor
+    function registerVisitor() {
+      const name = nameInput.value;
+      const email = emailInput.value;
+
+      // Push the visitor data to the database
+      visitorsRef.push({ name, email });
+
+      // Clear the form
+      nameInput.value = '';
+      emailInput.value = '';
+    }
+
+    // Listen for changes in the visitor collection
+    visitorsRef.on('child_added', (snapshot) => {
+      const visitor = snapshot.val();
+      const li = document.createElement('li');
+      li.textContent = `${visitor.name} - ${visitor.email}`;
+      visitorList.appendChild(li);
+    });
+  </script>
+</body>
+
+</html>
